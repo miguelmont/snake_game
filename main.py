@@ -10,9 +10,6 @@ screen = Screen()
 screen.setup(width=600, height=600)
 screen.bgcolor("black")
 screen.title("Snake game")
-def game_exit():
-    global game_is_on 
-    game_is_on = False
 snake = Snake()
 food = Food()
 score = Score()
