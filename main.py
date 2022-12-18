@@ -10,7 +10,9 @@ screen = Screen()
 screen.setup(width=600, height=600)
 screen.bgcolor("black")
 screen.title("Snake game")
-
+def game_exit():
+    global game_is_on 
+    game_is_on = False
 snake = Snake()
 food = Food()
 score = Score()
@@ -20,7 +22,7 @@ screen.onkey(snake.up,"w")
 screen.onkey(snake.down,"s")
 screen.onkey(snake.left,"a")
 screen.onkey(snake.right,"d")
-#screen.onkey(lambda: game_is_on=False, "q")
+screen.onkey(lambda: globals().update(game_is_on=False), "q")
 
 
 
@@ -41,6 +43,6 @@ while game_is_on:
             pass
         elif snake.head.distance(segment) < 10:
             score.game_over()
+            snake.clear()
 
 
-screen.exitonclick()
