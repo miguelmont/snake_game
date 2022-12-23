@@ -13,7 +13,7 @@ screen.title("Snake game")
 snake = Snake()
 food = Food()
 score = Score()
-
+screen.tracer(0)
 screen.listen()
 screen.onkey(snake.up,"w")
 screen.onkey(snake.down,"s")
@@ -30,16 +30,16 @@ while game_is_on:
 
     if snake.head.distance(food) < 15:
         food.refresh()
-        score.score_point()
         snake.extend()
-    if snake.head.xcor() in (-280, 280) or snake.head.ycor() in (-280, 280):
-        score.game_over()
+        score.increase_score()
+    elif snake.head.xcor() < -280 or snake.head.xcor() > 280 or snake.head.ycor() < -280 or snake.head.ycor() > 280:
+        score.reset()
+        snake.reset()
     
     for segment in snake.segments:
         if segment == snake.head:
             pass
         elif snake.head.distance(segment) < 10:
-            score.game_over()
-            snake.clear()
-
+            score.reset()
+            snake.reset()
 
