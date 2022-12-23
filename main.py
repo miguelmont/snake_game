@@ -10,6 +10,7 @@ screen = Screen()
 screen.setup(width=600, height=600)
 screen.bgcolor("black")
 screen.title("Snake game")
+screen.tracer(0)
 snake = Snake()
 food = Food()
 score = Score()
@@ -42,4 +43,4 @@ while game_is_on:
         elif snake.head.distance(segment) < 10:
             score.reset()
             snake.reset()
-
+         
